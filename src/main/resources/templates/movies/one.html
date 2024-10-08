@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>One movie</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:text="${'This is movie has such name: ' + movie.getMovie_name() + ', also such year of production: ' + movie.getYear_of_production()}">movie</div>
+
+<h2>Actors</h2>
+<ul>
+    <li th:each="actor : ${actors}" th:text="${actor.getActor_name()}">Actor Name</li>
+</ul>
+
+<h2>Add Actor</h2>
+<form th:action="@{/movies/{id}/add_actor(id=${movie.getMovie_id()})}" method="post">
+    <label>Choose actor:</label>
+    <select name="actorId">
+        <option th:each="actor : ${allActors}" th:value="${actor.getActor_id()}" th:text="${actor.getActor_name()}">Actor</option>
+    </select>
+    <button type="submit">Add Actor</button>
+</form>
+
+<a th:href="@{/movies}">← Back to movie list</a>
+
+<form th:method="GET" th:action="@{/movies/{id}/edit(id=${movie.getMovie_id()})}">
+    <input type="submit" value="Edit"/>
+</form>
+
+<form th:method="DELETE" th:action="@{/movies/{id}(id=${movie.getMovie_id()})}">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>

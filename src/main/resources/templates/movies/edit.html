@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit movie</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/movies/{id}(id=${movie.getMovie_id()})}" th:object="${movie}">
+    <label for="movie_name">Enter the name of movie: </label>
+    <input type="text" th:field="*{movie_name}" id="movie_name"/>
+    <div style="color:red" th:if="${#fields.hasErrors('movie_name')}" th:errors="*{movie_name}">Name Error</div>
+    <br/>
+    <label for="year_of_production">Movie year of production:</label>
+    <input type="text" th:field="*{year_of_production}" id="year_of_production"/>
+    <div style="color:red" th:if="${#fields.hasErrors('year_of_production')}" th:errors="*{year_of_production}">Year of production Error</div>
+    <br/>
+    <input type="submit" value="Edit"/>
+</form>
+<br/>
+<hr/>
+<a th:href="@{/actors}">← Back to movie list</a>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>One actor</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:text="${'This is actor has such name: ' + actor.getActor_name() + ', also such age: ' + actor.getAge()}">actor</div>
+
+<h2>Movies</h2>
+<ul>
+    <li th:each="movie : ${movies}" th:text="${movie.getMovie_name()}">Movie Name</li>
+</ul>
+
+<a th:href="@{/actors}">← Back to actor list</a>
+
+<form th:method="GET" th:action="@{/actors/{id}/edit(id=${actor.getActor_id()})}">
+    <input type="submit" value="Edit"/>
+</form>
+
+<form th:method="DELETE" th:action="@{/actors/{id}(id=${actor.getActor_id()})}">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>

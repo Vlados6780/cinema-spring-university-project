@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All</title>
+</head>
+<body>
+<a href="/actors">All actors</a>
+<a href="/movies">All movies</a>
+<a href="/excel">Download excel</a>
+</body>
+</html>
